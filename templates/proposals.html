@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="col-md-6 m-auto">
+     {% if message %}
+       {{ message }}
+      {% else %}
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">From Date</th>
+      <th scope="col">End Date</th>
+        <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for proposals in proposals %}
+    <tr>
+      <td>{{ proposals.user }}</td>
+      <td>{{ proposals.from_date }}</td>
+      <td>{{ proposals.to_date }}</td>
+      <td>
+        <div class="col-md-6 m-auto">
+        <a href="{% url 'proposals_evaluation' 1 proposals.id %}"><button type="submit" class="btn btn-success">Accept</button></a>
+        <a href="{% url 'proposals_evaluation' 0 proposals.id %}"><button type="submit" class="btn btn-danger mt-2">Reject</button></a>
+        </div>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+  {% endif %}
+</div>
+
+{% endblock %}

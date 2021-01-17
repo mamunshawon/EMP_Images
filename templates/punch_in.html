@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-5 m-auto">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary col-md-2 mt-3">Punch In</button>
+    </form>
+</div>
+{% endblock %}
